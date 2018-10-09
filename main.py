@@ -3,7 +3,6 @@ from flask import (Flask, json, jsonify, make_response, render_template,
                    send_from_directory)
 
 app = Flask("tleapp")
-app.debug = True
 
 
 @app.route("/")

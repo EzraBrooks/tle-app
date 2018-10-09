@@ -1,0 +1,22 @@
+{
+  "name": "tle-project",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "cesium": "^1.50.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EzraBrooks/TLEApp.git"
+  },
+  "author": "Ezra Brooks",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EzraBrooks/TLEApp/issues"
+  },
+  "homepage": "https://github.com/EzraBrooks/TLEApp#readme"
+}
