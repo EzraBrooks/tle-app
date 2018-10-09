@@ -7,6 +7,9 @@ name = "pypi"
 "tle2czml" = "*"
 flask = "*"
 gunicorn = "*"
+"beautifulsoup4" = "*"
+requests = "*"
+pymongo = "*"
 
 [dev-packages]
 

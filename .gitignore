@@ -1,2 +1,5 @@
 node_modules
-*.pyc
+__pycache__
+*.txt
+*.czml
+.DS_Store
