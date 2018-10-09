@@ -2,7 +2,6 @@ import os
 
 import requests
 import tle2czml
-from bs4 import BeautifulSoup
 from bson import json_util
 from flask import (Flask, Response, json, jsonify, render_template,
                    send_from_directory)
@@ -15,8 +14,8 @@ try:
 except KeyError as e:
     pass
 mongo_client = MongoClient(mongo_uri)
-orbits_db = mongo_client.get_database('orbits')
-czml_collection = orbits_db.get_collection('czml')
+db = mongo_client.get_default_database()
+czml_collection = db['czml']
 
 app = Flask("tleapp")
 
@@ -50,20 +49,4 @@ def get_orbits():
 
 
 if __name__ == "__main__":
-    norad_page_text = requests.get(
-        "https://celestrak.com/NORAD/elements/master.php").text
-    soup = BeautifulSoup(norad_page_text)
-    txt_links = soup.select("a[href*=.txt]")
-    for link in txt_links:
-        filename = link.get("href")
-        tle_file = requests.get(
-            "https://celestrak.com/NORAD/elements/" + filename).text
-        with open(f"{filename}", "w") as temp_file:
-            temp_file.write(tle_file)
-        tle2czml.create_czml(filename, outputfile_path=f"{filename}.czml")
-        with open(f"{filename}.czml", "r") as czml_file:
-            parsed = json.loads(czml_file.read())
-            for entry in parsed:
-                czml_collection.replace_one(
-                    {'id': entry['id']}, entry, upsert=True)
     app.run()
