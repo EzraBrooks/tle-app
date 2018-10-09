@@ -4,4 +4,6 @@ Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOi
 window.addEventListener('load', function () {
     var viewer = new Cesium.Viewer(document.getElementById('cesium-container'));
     viewer.dataSources.add(Cesium.CzmlDataSource.load('/orbits'));
+    viewer.clock.canAnimate = true;
+    viewer.clock.shouldAnimate = true;
 })
