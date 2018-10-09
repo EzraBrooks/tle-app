@@ -4,7 +4,7 @@ import requests
 import tle2czml
 from bs4 import BeautifulSoup
 from bson import json_util
-from flask import (Flask, json, jsonify, make_response, render_template,
+from flask import (Flask, Response, json, jsonify, render_template,
                    send_from_directory)
 from pymongo import MongoClient
 
@@ -33,11 +33,20 @@ def send_cesium_files(path):
 
 @app.route("/orbit/<id>")
 def get_orbit(id):
-    return json_util.dumps([
+    return Response(json_util.dumps([
         czml_collection.find_one({'id': 'document'}),
         czml_collection.find_one(
             {'id': {'$regex': f'.*{id}.*', '$options': 'i'}})
-    ])
+    ]), status=200, content_type="application/json")
+
+
+@app.route("/orbits")
+def get_orbits():
+    return Response(json_util.dumps(czml_collection.aggregate([
+        {'$match': {
+            'id': {'$regex': '^((?!deb)(?!r/b).)*$', '$options': 'i'}}},
+        {'$limit': 100}
+    ])), status=200, content_type="application/json")
 
 
 if __name__ == "__main__":
