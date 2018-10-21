@@ -4,12 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-"tle2czml" = "*"
 flask = "*"
 gunicorn = "*"
 "beautifulsoup4" = "*"
 requests = "*"
 pymongo = "*"
+"tle2czml" = {path = "./tle2czml"}
 
 [dev-packages]
 

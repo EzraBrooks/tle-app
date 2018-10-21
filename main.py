@@ -7,14 +7,14 @@ from flask import (Flask, Response, json, jsonify, render_template,
                    send_from_directory)
 from pymongo import MongoClient
 
-mongo_uri = "mongodb://localhost:27017"
+mongo_uri = "mongodb://localhost:27017/orbits"
 try:
     # This is what it's called by default on Heroku
     mongo_uri = os.environ["MONGODB_URI"]
 except KeyError as e:
     pass
 mongo_client = MongoClient(mongo_uri)
-db = mongo_client.get_default_database()
+db = mongo_client.get_database()
 czml_collection = db['czml']
 
 app = Flask("tleapp")
@@ -35,7 +35,7 @@ def get_orbit(id):
     return Response(json_util.dumps([
         czml_collection.find_one({'id': 'document'}),
         czml_collection.find_one(
-            {'id': {'$regex': f'.*{id}.*', '$options': 'i'}})
+            {'$text': {'$search': id})
     ]), status=200, content_type="application/json")
 
 
