@@ -1,2 +1,2 @@
-release: pipenv install && pipenv run python importer.py
+release: pipenv install
 web: pipenv run gunicorn main:app
