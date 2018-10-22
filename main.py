@@ -34,8 +34,7 @@ def send_cesium_files(path):
 def get_orbit(id):
     return Response(json_util.dumps([
         czml_collection.find_one({'id': 'document'}),
-        czml_collection.find_one(
-            {'$text': {'$search': id})
+        czml_collection.find_one({'$text': {'$search': id}})
     ]), status=200, content_type="application/json")
 
 
