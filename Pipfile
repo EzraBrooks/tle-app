@@ -14,7 +14,6 @@ dnspython = "*"
 
 [dev-packages]
 tle2czml = {editable = true, path = "./tle2czml"}
-pylint = "*"
 
 [requires]
 python_version = "3.8"
