@@ -11,6 +11,7 @@ requests = "*"
 pymongo = "*"
 tle2czml = {git = "https://github.com/EzraBrooks/tle2czml.git"}
 dnspython = "*"
+tqdm = "*"
 
 [dev-packages]
 tle2czml = {editable = true, path = "./tle2czml"}
