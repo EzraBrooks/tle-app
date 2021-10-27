@@ -1,7 +1,6 @@
+#!/usr/bin/env python3
 import os
 
-import requests
-import tle2czml
 from bson import json_util
 from flask import (Flask, Response, json, jsonify, render_template,
                    send_from_directory)
