@@ -15,6 +15,7 @@ tqdm = "*"
 
 [dev-packages]
 tle2czml = {editable = true, path = "./tle2czml"}
+autopep8 = "*"
 
 [requires]
 python_version = "3.8"
