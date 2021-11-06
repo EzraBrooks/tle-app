@@ -1,22 +1,22 @@
 {
-  "name": "tle-project",
-  "version": "1.0.0",
-  "description": "",
-  "dependencies": {
-    "cesium": "^1.50.0"
-  },
-  "devDependencies": {},
+  "name": "tle-app",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EzraBrooks/TLEApp.git"
+  "dependencies": {
+    "next": "12.0.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
-  "author": "Ezra Brooks",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/EzraBrooks/TLEApp/issues"
-  },
-  "homepage": "https://github.com/EzraBrooks/TLEApp#readme"
+  "devDependencies": {
+    "@types/node": "16.11.6",
+    "@types/react": "17.0.34",
+    "eslint": "7",
+    "eslint-config-next": "12.0.3",
+    "typescript": "4.4.4"
+  }
 }
