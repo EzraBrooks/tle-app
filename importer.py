@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import datetime
 import os
 from time import strptime
 
@@ -15,8 +16,10 @@ def parse_satcat_entry(satcat_entry: str):
     launch_date = None
     decay_date = None
     try:
-        launch_date = strptime(satcat_entry[56:66].strip(), r'%Y-%m-%d')
-        decay_date = strptime(satcat_entry[75:85].strip(), r'%Y-%m-%d')
+        launch_date = datetime.datetime(
+            *strptime(satcat_entry[56:66].strip(), r'%Y-%m-%d')[:6])
+        decay_date = datetime.datetime(
+            *strptime(satcat_entry[75:85].strip(), r'%Y-%m-%d')[:6])
     finally:
         return {
             'designator': satcat_entry[0:12].strip(),
